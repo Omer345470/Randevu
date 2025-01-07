@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traş Randevu Sistemi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label, input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .confirmation {
+            display: none;
+            background-color: #e7f9e7;
+            border: 1px solid #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Traş Randevu Sistemi</h1>
+        <label for="name">Adınız</label>
+        <input type="text" id="name" placeholder="Adınızı girin" required>
+
+        <label for="date">Randevu Tarihi</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Randevu Saati</label>
+        <input type="time" id="time" required>
+
+        <button onclick="bookAppointment()">Randevu Al</button>
+
+        <div id="confirmation" class="confirmation">
+            <p>Randevunuz başarıyla alındı! <span id="confirmationDetails"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function bookAppointment() {
+            const name = document.getElementById("name").value;
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+
+            if (name && date && time) {
+                document.getElementById("confirmationDetails").textContent = `Adı: ${name}, Tarih: ${date}, Saat: ${time}`;
+                document.getElementById("confirmation").style.display = "block";
+            } else {
+                alert("Lütfen tüm bilgileri doldurun.");
+            }
+        }
+    </script>
+</body>
+</html>
